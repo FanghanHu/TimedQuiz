@@ -3,7 +3,8 @@ let questions = [
     '"3" + 2 = ?',
     "What is the result of this expression: 'undefined == false'",
     "What is Bootstrap?",
-    "What does 'm-auto' class do in bootstrap?"
+    "What does 'm-auto' class do in bootstrap?",
+    '"3" * 2 = ?',
 ];
 
 // answer at index 0 is the correct answer
@@ -23,7 +24,11 @@ let answers = [
         "A Javascript framework"],
     ["Set margin to auto",
         "Set padding to auto",
-        "Does nothing"]
+        "Does nothing"],
+    ['6',
+        '"6"',
+        '"32"',
+        '32']
 ];
 
 
