@@ -16,10 +16,24 @@ let answers = [
 ];
 
 
-let secondsLeft = 30;
+let secondsLeft = 120;
 let currentIndex = 0;
 let $question = $('#question');
 let $answers = $('#answers');
+let $startBtn = $('#startBtn');
+let $time = $('#time');
+let $result = $('#result');
+
+let score = 0;
+let scores = [];
+
+let interval = undefined;
+
+//load past score:
+if(localStorage.getItem('scores')) {
+    scores = JSON.parse(localStorage.getItem('scores'));
+}
+
 
 /**
  * @param index
@@ -42,15 +56,67 @@ function renderQuestion(index) {
     }
 }
 
+
+
+function displayScore() {
+    clearInterval(interval);
+    interval = undefined;
+    score += secondsLeft;
+
+    alert("Your score is: " + score);
+    let initials = prompt('Please Enter your initials');
+    if(initials != null) {
+        scores.push(initials + ": " + score);
+        localStorage.setItem('scores', JSON.stringify(scores));
+    }
+}
+
+/**
+ * when an answer was clicked.
+ */
 $answers.on('click', (event) => {
+    if(!interval) {
+        //stop the quiz if the time is not counting.
+        return;
+    }
+
     let answerText = $(event.target).text();
     let index = $question.data('question-index');
-
+    $result.show();
     if(answers[index][0] === answerText) {
-        console.log('correct');
+        $result.text('Correct');
+        score+=5;
     } else {
-        console.log('wrong');
+        $result.text('Incorrect');
+        secondsLeft-=5;
+        $time.text(secondsLeft);
     }
+    currentIndex++;
+
+    if(currentIndex < questions.length) {
+        renderQuestion(currentIndex);
+    } else {
+        displayScore();
+    }
+
+    setTimeout(()=> {
+        $result.hide();
+    }, 2000);
 });
 
-renderQuestion(currentIndex);
+
+
+$startBtn.click(() => {
+    $startBtn.css('display', 'none');
+    renderQuestion(currentIndex);
+
+    interval = setInterval(()=> {
+        secondsLeft--;
+        $time.text(secondsLeft);
+        if(secondsLeft <= 0) {
+            alert('Time is up!');
+            displayScore();
+        }
+
+    }, 1000)
+});
