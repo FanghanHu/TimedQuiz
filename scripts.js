@@ -127,7 +127,7 @@ $answers.on('click', (event) => {
 
 
 /**
- * starts the quiz, also check for time left to stop the quiz/
+ * starts the quiz, also check for time left to stop the quiz.
  */
 $startBtn.click(() => {
     $startBtn.css('display', 'none');

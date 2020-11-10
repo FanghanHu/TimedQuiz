@@ -29,15 +29,22 @@
 <div class="container">
     <div class="jumbotron  text-center m-3">
         <h1>Welcome to your quiz!</h1>
+        <!--timer-->
         <h2 class="text-success">Time Left: </h2>
         <h2 id="time" class="text-success">120</h2>
+
+        <!--Display if the last answer is right or wrong-->
         <h2 id="result" class="text-muted"></h2>
+
+        <!--Starts the quiz-->
         <button id="startBtn" class="btn btn-primary btn-lg rounded">Start</button>
     </div>
 
 
     <div class="m-3 p-3">
+<!--        Holds the question-->
         <h2 id="question"></h2>
+<!--        Holds the answer-->
         <ol id="answers">
         </ol>
     </div>

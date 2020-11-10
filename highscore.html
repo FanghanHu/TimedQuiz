@@ -43,10 +43,13 @@
     let scores = JSON.parse(localStorage.getItem('scores'));
 
     if(scores) {
+
+        //store sorted highscore
         let sortedScore = [];
         for(let score of scores) {
             let scoreNum = score.split(':')[1];
 
+            //Sort score
             let found = false;
             for(let i=0; i<sortedScore.length; i++) {
                 let scoreNum2 = sortedScore[i].split(':')[1];
@@ -61,6 +64,7 @@
             }
         }
 
+        //display score as a li
         for(let score of sortedScore) {
             $(`<li>${score}</li>`).appendTo($('#display'));
         }
