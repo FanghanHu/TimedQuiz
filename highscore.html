@@ -53,7 +53,7 @@
             let found = false;
             for(let i=0; i<sortedScore.length; i++) {
                 let scoreNum2 = sortedScore[i].split(':')[1];
-                if(scoreNum > scoreNum2) {
+                if(parseInt(scoreNum) > parseInt(scoreNum2)) {
                     sortedScore.splice(i, 0, score);
                     found = true;
                     break;

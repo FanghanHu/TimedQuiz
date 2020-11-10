@@ -18,6 +18,10 @@
             padding: 10px;
             background-color: #eee;
         }
+
+        #jumbotron{
+            min-height: 350px;
+        }
     </style>
 </head>
 <body>
@@ -27,14 +31,14 @@
 </div>
 
 <div class="container">
-    <div class="jumbotron  text-center m-3">
+    <div id="jumbotron" class="jumbotron text-center m-3">
         <h1>Welcome to your quiz!</h1>
         <!--timer-->
         <h2 class="text-success">Time Left: </h2>
         <h2 id="time" class="text-success">120</h2>
 
         <!--Display if the last answer is right or wrong-->
-        <h2 id="result" class="text-muted"></h2>
+        <h2 id="result" class="text-muted mt-3"></h2>
 
         <!--Starts the quiz-->
         <button id="startBtn" class="btn btn-primary btn-lg rounded">Start</button>
