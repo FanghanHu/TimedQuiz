@@ -39,6 +39,7 @@ let score = 0;
 let scores = [];
 
 let interval = undefined;
+let timeout = undefined;
 
 //load past score:
 if(localStorage.getItem('scores')) {
@@ -47,6 +48,7 @@ if(localStorage.getItem('scores')) {
 
 
 /**
+ * renders the question and answers
  * @param index
  */
 function renderQuestion(index) {
@@ -68,7 +70,9 @@ function renderQuestion(index) {
 }
 
 
-
+/**
+ * stops the countdown, calculate and displays score.
+ */
 function displayScore() {
     clearInterval(interval);
     interval = undefined;
@@ -84,6 +88,7 @@ function displayScore() {
 
 /**
  * when an answer was clicked.
+ * check if answer is correct, calculates time left and check for end of quiz
  */
 $answers.on('click', (event) => {
     if(!interval) {
@@ -110,13 +115,20 @@ $answers.on('click', (event) => {
         displayScore();
     }
 
-    setTimeout(()=> {
+
+    if(timeout) {
+        clearTimeout(timeout);
+    }
+
+    timeout = setTimeout(()=> {
         $result.hide();
     }, 2000);
 });
 
 
-
+/**
+ * starts the quiz, also check for time left to stop the quiz/
+ */
 $startBtn.click(() => {
     $startBtn.css('display', 'none');
     renderQuestion(currentIndex);
