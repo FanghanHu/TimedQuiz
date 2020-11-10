@@ -1,6 +1,9 @@
 let questions = [
     "Where should you put your jquery CDN link?",
-    '"3" + 2 = ?'
+    '"3" + 2 = ?',
+    "What is the result of this expression: 'undefined == false'",
+    "What is Bootstrap?",
+    "What does 'm-auto' class do in bootstrap?"
 ];
 
 // answer at index 0 is the correct answer
@@ -12,7 +15,15 @@ let answers = [
     ['"32"',
         '32',
         '5',
-        '"5']
+        '"5"'],
+    ["false",
+        'true',
+        'undefined'],
+    ["A CSS framework",
+        "A Javascript framework"],
+    ["Set margin to auto",
+        "Set padding to auto",
+        "Does nothing"]
 ];
 
 
